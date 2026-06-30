@@ -1,5 +1,5 @@
-const Video from '../models/Video.js';
-const { fetchAndSaveVideos, formatViews } from '../services/youtubeService.js';
+import Video from '../models/Video.js';
+import { fetchAndSaveVideos, formatViews } from '../services/youtubeService.js';
 
 // ─── GET /api/videos ─────────────────────────────────────────
 // Returns videos from MongoDB
