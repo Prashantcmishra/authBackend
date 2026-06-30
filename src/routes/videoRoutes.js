@@ -7,7 +7,7 @@ const {
   fetchVideos,
 } = require('../controllers/videoController');
 
-const router = express.Router();
+// const router = express.Router();
 
 router.get('/',        getVideos);      // GET  /api/videos
 router.get('/search',  searchVideos);   // GET  /api/videos/search?q=react
