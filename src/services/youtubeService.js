@@ -5,7 +5,7 @@ const API_KEY  = process.env.YOUTUBE_API_KEY;
 const BASE_URL = process.env.YOUTUBE_BASE_URL;
 
 // ─── 1. Search videos from YouTube ───────────────────────────
-const searchFromYouTube = async (query = 'trending', maxResults = 20) => {
+ export const searchFromYouTube = async (query = 'trending', maxResults = 20) => {
   const response = await axios.get(`${BASE_URL}/search`, {
     params: {
       part:       'snippet',
@@ -19,7 +19,7 @@ const searchFromYouTube = async (query = 'trending', maxResults = 20) => {
 };
 
 // ─── 2. Get video stats (views, likes, duration) ─────────────
-const getVideoStats = async (videoIds) => {
+export const getVideoStats = async (videoIds) => {
   const ids = videoIds.join(',');
   const response = await axios.get(`${BASE_URL}/videos`, {
     params: {
@@ -32,7 +32,7 @@ const getVideoStats = async (videoIds) => {
 };
 
 // ─── 3. Format duration  PT1H2M3S → 1:02:03 ─────────────────
-const formatDuration = (isoDuration) => {
+export const formatDuration = (isoDuration) => {
   const match = isoDuration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
   if (!match) return '0:00';
   const h = parseInt(match[1] || 0);
@@ -45,7 +45,7 @@ const formatDuration = (isoDuration) => {
 };
 
 // ─── 4. Fetch + Save to MongoDB ──────────────────────────────
-const fetchAndSaveVideos = async (query = 'trending', maxResults = 20) => {
+export const fetchAndSaveVideos = async (query = 'trending', maxResults = 20) => {
   try {
     // Step 1 - search
     const searchResults = await searchFromYouTube(query, maxResults);
@@ -99,14 +99,14 @@ const fetchAndSaveVideos = async (query = 'trending', maxResults = 20) => {
 };
 
 // ─── 5. Format view count  1200000 → 1.2M ───────────────────
-const formatViews = (count) => {
+export const formatViews = (count) => {
   const num = parseInt(count || 0);
   if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M views';
   if (num >= 1000)    return (num / 1000).toFixed(1)    + 'K views';
   return num + ' views';
 };
 
-module.exports = {
-  fetchAndSaveVideos,
-  formatViews,
-};
+// module.exports = {
+//   fetchAndSaveVideos,
+//   formatViews,
+// };

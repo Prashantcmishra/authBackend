@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const videoSchema = new mongoose.Schema({
   videoId:      { type: String, unique: true },
@@ -15,4 +15,5 @@ const videoSchema = new mongoose.Schema({
   category:     { type: String, default: 'general' },
 }, { timestamps: true });
 
-module.exports = mongoose.model('Video', videoSchema);
+const Video = mongoose.model("Video", videoSchema);
+export default Video;
