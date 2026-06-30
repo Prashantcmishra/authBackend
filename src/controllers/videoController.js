@@ -3,7 +3,7 @@ const { fetchAndSaveVideos, formatViews } from '../services/youtubeService.js';
 
 // ─── GET /api/videos ─────────────────────────────────────────
 // Returns videos from MongoDB
-const getVideos = async (req, res) => {
+ export const getVideos = async (req, res) => {
   try {
     const { category = 'trending', page = 1, limit = 20 } = req.query;
 
@@ -34,7 +34,7 @@ const getVideos = async (req, res) => {
 
 // ─── GET /api/videos/:id ─────────────────────────────────────
 // Returns single video detail
-const getVideoById = async (req, res) => {
+export const getVideoById = async (req, res) => {
   try {
     const video = await Video.findOne({ videoId: req.params.id });
     if (!video) {
@@ -63,7 +63,7 @@ const getVideoById = async (req, res) => {
 };
 
 // ─── GET /api/videos/search?q=react ──────────────────────────
-const searchVideos = async (req, res) => {
+export const searchVideos = async (req, res) => {
   try {
     const { q } = req.query;
     if (!q) return res.status(400).json({ success: false, message: 'Query required' });
@@ -91,7 +91,7 @@ const searchVideos = async (req, res) => {
 
 // ─── POST /api/videos/fetch ──────────────────────────────────
 // Admin trigger - fetch from YouTube and save to MongoDB
-const fetchVideos = async (req, res) => {
+export const fetchVideos = async (req, res) => {
   try {
     const { query = 'trending', maxResults = 20 } = req.body;
     const videos = await fetchAndSaveVideos(query, maxResults);
@@ -101,4 +101,9 @@ const fetchVideos = async (req, res) => {
   }
 };
 
-module.exports = { getVideos, getVideoById, searchVideos, fetchVideos };
+// export default {
+//   getVideos,
+//   getVideoById,
+//   searchVideos,
+//   fetchVideos,
+// };
