@@ -7,9 +7,11 @@ const {
   fetchVideos,
 } = require('../controllers/videoController');
 
-router.get  ('/',        getVideos);      // GET  /api/videos
-router.get  ('/search',  searchVideos);   // GET  /api/videos/search?q=react
-router.get  ('/:id',     getVideoById);   // GET  /api/videos/:id
-router.post ('/fetch',   fetchVideos);    // POST /api/videos/fetch
+const router = express.Router();
 
-module.exports = router;
+router.get('/',        getVideos);      // GET  /api/videos
+router.get('/search',  searchVideos);   // GET  /api/videos/search?q=react
+router.get('/:id',     getVideoById);   // GET  /api/videos/:id
+router.post('/fetch',   fetchVideos);    // POST /api/videos/fetch
+
+export default router;
