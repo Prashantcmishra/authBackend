@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Video from '../models/videoModel.js';
+import Video from '../models/Video.js';
 
 const API_KEY  = process.env.YOUTUBE_API_KEY;
 const BASE_URL = process.env.YOUTUBE_BASE_URL;
