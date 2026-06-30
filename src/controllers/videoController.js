@@ -1,5 +1,5 @@
-const Video                          = require('../models/Video');
-const { fetchAndSaveVideos, formatViews } = require('../services/youtubeService');
+const Video from '../models/Video.js';
+const { fetchAndSaveVideos, formatViews } from '../services/youtubeService.js';
 
 // ─── GET /api/videos ─────────────────────────────────────────
 // Returns videos from MongoDB

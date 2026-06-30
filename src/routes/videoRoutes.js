@@ -5,7 +5,7 @@ const {
   getVideoById,
   searchVideos,
   fetchVideos,
-} = require('../controllers/videoController');
+} from "../controllers/videoController.js";
 
 const router  = express.Router();
 

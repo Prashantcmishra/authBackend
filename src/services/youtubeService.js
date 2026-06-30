@@ -1,5 +1,5 @@
-const axios  = require('axios');
-const Video  = require('../models/Video');
+import axios from 'axios';
+import Video from '../models/videoModel.js';
 
 const API_KEY  = process.env.YOUTUBE_API_KEY;
 const BASE_URL = process.env.YOUTUBE_BASE_URL;
